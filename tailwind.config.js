@@ -2,7 +2,7 @@
 import plugin from 'tailwindcss/plugin';
 
 export default {
-  content: ['./src/**/*.{astro,html,js,ts,jsx,tsx}', './public/**/*.html'],
+  content: ['./src/**/*.{astro,html,js,ts,jsx,tsx,css}', './public/**/*.html'],
   theme: {
     screens: {
       xs: '150px',
