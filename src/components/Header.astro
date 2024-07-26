@@ -1,0 +1,143 @@
+---
+
+---
+
+<div>
+  <nav class="fixed z-1000 w-100% top-0px h-84px flex-between px-50px">
+    <a href="/about">
+      <img src="/logo.png" alt="" class="md:w-150px w-96px md:block hidden" />
+      <img src="/sublogo.png" alt="" class="w-40px md:hidden" />
+    </a>
+    <div class="space-x-20px text-base hidden md:block">
+      <a class="nav-link" href="/"> Home </a>
+      <a class="nav-link" href="/about"> About us </a>
+      <a class="nav-link" href="/gallery"> Gallery </a>
+      <a class="nav-link" href="/contact"> Contact </a>
+    </div>
+    <div class="md:hidden visible">
+      <button type="button" class="relative flex-center w-42px h-42px">
+        <div id="button" class="closed"></div>
+      </button>
+    </div>
+  </nav>
+  <div id="dropdown" class="hidden dropdown-menu md:hidden z-1000">
+    <a class="dropdown-item" href="/" data-aos="fade-left"> Home </a>
+    <a class="dropdown-item" href="/about" data-aos="fade-left"> About </a>
+    <a class="dropdown-item" href="/gallery" data-aos="fade-right"> Gallery </a>
+    <a class="dropdown-item" href="/contact" data-aos="fade-left"> Contact </a>
+    <a href="https://wa.link/svo99g" class="dropdown-item">
+      <button
+        class="bg-primary2 text-white py-2 px-1 rounded text-left w-full border border-primary2 hover:bg-pirmary2"
+        data-aos="fade-right"
+      >
+        Contact Us
+      </button>
+    </a>
+    <a href="https://wa.link/svo99g" class="dropdown-item">
+      <button
+        class="bg-primary2 text-white py-2 px-1 rounded text-left w-full border mt-2 border-primary2 hover:bg-pirmary2"
+        data-aos="fade-up"
+      >
+        Register
+      </button>
+    </a>
+  </div>
+</div>
+<style>
+  nav {
+    transition: background-color 0.3s ease;
+  }
+  .scroll {
+    background-color: white;
+    transition: background-color 0.3s ease;
+  }
+  .open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('/public/cancel.svg');
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+  }
+  .closed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('/public/menu.svg');
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+  }
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    backdrop-filter: blur(8px);
+    background-color: rgba(7, 7, 34, 0.8);
+    box-shadow:
+      0 10px 15px rgba(0, 0, 0, 0.1),
+      0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    width: 200px;
+    overflow: hidden;
+  }
+  .dropdown-item {
+    width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 14px 24px;
+    text-align: left;
+    color: rgba(204, 207, 255, 0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(204, 207, 255, 0.3);
+  }
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+  .dropdown-item:hover {
+    color: rgba(204, 207, 255);
+    transform: scale(1.05);
+  }
+</style>
+<script>
+  const nav = document.querySelector('nav');
+  const dropdown = document.getElementById('dropdown');
+  const button = document.getElementById('button');
+  const navLinks = nav.querySelectorAll('a');
+  const currentURL = window.location.href;
+
+  navLinks.forEach((link) => {
+    if (link.href === currentURL) {
+      link.classList.add('active');
+    }
+  });
+
+  button.addEventListener('click', (event) => {
+    if (button.className.includes('open')) {
+      button.classList.remove('open');
+      button.classList.add('closed');
+      dropdown.classList.add('hidden');
+      console.log('closed');
+    } else {
+      button.classList.remove('closed');
+      button.classList.add('open');
+      dropdown.classList.remove('hidden');
+      console.log('open');
+    }
+  });
+
+  window.onscroll = function () {
+    if (window.scrollY > 0) {
+      nav.classList.add('scroll');
+      nav.classList.add('shadow-sm');
+    } else {
+      nav.classList.remove('scroll');
+      nav.classList.remove('shadow-sm');
+    }
+  };
+</script>
