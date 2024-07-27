@@ -2,6 +2,7 @@
 import plugin from 'tailwindcss/plugin';
 
 export default {
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './Components/**/*.{js,ts,jsx,tsx}'],
   content: ['./src/**/*.{astro,html,js,ts,jsx,tsx,css}', './public/**/*.html'],
   theme: {
     screens: {
